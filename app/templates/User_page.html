@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}
+   User Name
+{% endblock %}
+
+
+
+
+
+{% block content %}
+<div class="row">
+
+  <div class="col-md-3">
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-info" role="alert">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+  </div>
+
+</div>
+
+<div class=row>
+  <div class='col-md-12'>
+    <img src="{{ user.avatar(128) }}" style="width: 128px;" class="card-img" alt="...">
+    
+    
+      <div class="card-body">
+        <h5 class="card-title">{{user.username}}</h5>
+        <p class="card-text"></p>
+        <p class="card-text"><small class="text-muted"></small></p>
+      </div>
+
+
+  </div>
+</div>
+
+
+{% for post in posts %}
+<div class="row justyfi">
+<div class="col-md-3">
+
+  <div class="card mb-3" style="max-width: 540px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="{{ user.avatar(128) }}" class="card-img" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{user.username}}</h5>
+        <p class="card-text"></p>
+        <p class="card-text"><small class="text-muted"></small></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card" style="width: 10rem;">
+  <img src="{{post.author.avatar(64)}}" style="width:5rem" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{post.author.username}}</h5>
+    <p class="card-text">{{post.body}}</p>
+    
+  </div>
+</div>
+
+</div>
+</div>
+
+
+
+{% endfor %}
+
+
+{% endblock %} 
+
+
+
+
+

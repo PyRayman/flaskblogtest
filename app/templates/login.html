@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}
+Login
+{% endblock %}
+
+
+
+{% block content %}
+
+
+  <div class="col-md-3">
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-info" role="alert">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+  </div>
+
+
+
+<div class="col-md-6">
+	<h1>Sign In</h1>
+	<form action="", method="post">
+
+		{{ form.hidden_tag() }}
+		
+		<div class="form-group">
+			<p>
+				{{ form.username.label() }}<br>
+
+				{{ form.username(size=32,class='form-control') }}<br>
+
+				{% for error in form.username.errors %}
+				<div class="alert alert-danger" role="alert">
+					[{{error}}]
+				</div>
+				{% endfor %}
+
+			</p>
+
+		</div>
+
+		<div class="form-group">
+			<p>
+				{{ form.password.label() }}<br>
+
+				{{ form.password(size=32,class='form-control') }}<br>
+
+				{% for error in form.password.errors %}
+				<div class="alert alert-danger" role="alert">
+					[{{error}}]
+				</div>
+				{% endfor %}
+
+			</p>
+
+		</div>
+
+		<div class="form-group form-check">
+
+			<p> {{ form.remember_me(class='form-check-input') }} {{ form.remember_me.label(class='form-check-label') }}</p>
+			
+		</div>
+		<p> {{ form.submit(class='btn btn-primary')}} </p>
+	</form>
+	<p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
+</div>
+{% endblock %}

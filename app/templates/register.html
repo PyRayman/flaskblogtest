@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block title %}
+Register
+{% endblock %}
+
+
+
+{% block content %}
+
+
+  <div class="col-md-3">
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-info" role="alert">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+  </div>
+
+
+
+<div class="col-md-6">
+	<h1>Register</h1>
+	<form action="", method="post">
+
+		{{ form.hidden_tag() }}
+		
+		<div class="form-group">
+			<p>
+				{{ form.username.label() }}<br>
+
+				{{ form.username(size=32,class='form-control') }}<br>
+
+				{% for error in form.username.errors %}
+				<div class="alert alert-danger" role="alert">
+					[{{error}}]
+				</div>
+				{% endfor %}
+
+			</p>
+
+		</div>
+
+		<div class="form-group">
+			
+			<p>
+				
+				{{ form.email.label() }}<br>
+
+				{{ form.email(size=64,class="form-control") }}<br>
+
+				{% for error in form.email.errors %}
+				<div class='alert alert-danger' role='alert'>
+					[{{error}}]
+				</div>
+				{% endfor %}
+			</p>
+
+		</div>
+
+
+		<div class="form-group">
+			<p>
+				{{ form.password.label() }}<br>
+
+				{{ form.password(size=32,class='form-control') }}<br>
+
+				{% for error in form.password.errors %}
+				<div class="alert alert-danger" role="alert">
+					[{{error}}]
+				</div>
+				{% endfor %}
+
+			</p>
+
+		</div>
+
+		<div class="form-group">
+			<p>
+				{{ form.password2.label() }}<br>
+
+				{{ form.password2(size=32,class='form-control') }}<br>
+
+				{% for error in form.password2.errors %}
+				<div class="alert alert-danger" role="alert">
+					[{{error}}]
+				</div>
+				{% endfor %}
+
+			</p>
+
+		</div>
+
+		
+		<p> {{ form.submit(class='btn btn-primary')}} </p>
+	</form>
+</div>
+{% endblock %}
